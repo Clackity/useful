@@ -27,7 +27,6 @@ int CALLBACK WinMain(
 	mainFunc(argc, argvw);
 	return 0;
 }
-
 #else
 int main(int argc, char *argv[]) {
 	unsigned short **argvw = new unsigned short *[argc];
