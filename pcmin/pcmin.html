@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>pcmin.h specification</title>
+</head>
+<body>
+<h2>PCM Input</h2>
+<hr style="width: 100%; height: 2px;">
+<h3><a name="Functions"></a>Functions:</h3>
+<ul>
+  <li>int <a href="#pcminStart"><span style="font-weight: bold;">pcminStart</span></a>(unsigned
+long rate, unsigned long channels, float *buffer, unsigned long
+bufferlen)</li>
+</ul>
+<ul>
+  <li>unsigned long <a href="#pcminLock"><span
+ style="font-weight: bold;">pcminLock</span></a>(unsigned long
+*blockindex)</li>
+</ul>
+<ul>
+  <li>void <a href="#pcminUnlock"><span style="font-weight: bold;">pcminUnlock</span></a>(unsigned
+long blocksread)</li>
+</ul>
+<ul>
+  <li>void <a href="#pcminStop"><span style="font-weight: bold;">pcminStop</span></a>()</li>
+</ul>
+<br>
+<hr style="width: 100%; height: 2px;">
+<h3><a name="pcminStart"></a>pcminStart</h3>
+int <span style="font-weight: bold;">pcminStart</span>(unsigned long
+rate, unsigned long channels, float *buffer, unsigned long bufferlen)<br>
+<div style="margin-left: 40px;"><br>
+unsigned long <span style="font-weight: bold;">rate</span> [in]<span
+ style="font-weight: bold;"><br>
+</span>
+<div style="margin-left: 40px;">desired sample rate, in samples per
+second per channel<br>
+</div>
+<br>
+unsigned long <span style="font-weight: bold;">channels</span> [in]<br>
+<div style="margin-left: 40px;">desired number of channels<br>
+</div>
+<br>
+float *<span style="font-weight: bold;">buffer</span> [in]<br>
+<div style="margin-left: 40px;">pointer to a circular buffer that must
+be at least [channels * bufferlen * sizeof(float)] bytes large<br>
+</div>
+<br>
+unsigned long <span style="font-weight: bold;">bufferlen</span> [in]<br>
+<div style="margin-left: 40px;">size of buffer in blocks (channels *
+sizeof(float))<br>
+</div>
+<br>
+int [return]<br>
+<div style="margin-left: 40px;">0 = success<br>
+1 = unsupported format<br>
+</div>
+</div>
+<br>
+<a href="#Functions">back to function list</a><br>
+<hr style="width: 100%; height: 2px;">
+<h3><a name="pcminLock"></a>pcminLock</h3>
+unsigned long <span style="font-weight: bold;">pcminLock</span>(unsigned
+long *blockindex)<br>
+<br>
+<div style="margin-left: 40px;">unsigned long *<span
+ style="font-weight: bold;">blockindex</span> [out]<br>
+</div>
+<div style="margin-left: 40px;">
+<div style="margin-left: 40px;">will be set to the index of the oldest
+unread block<br>
+</div>
+<br>
+unsigned long [return]<br>
+<div style="margin-left: 40px;">number of new blocks (may be 0)<br>
+</div>
+</div>
+<br>
+<a href="pcmin.html#Functions">back to function list</a>
+<hr style="width: 100%; height: 2px;">
+<h3><a name="pcminUnlock"></a>pcminUnlock</h3>
+void <span style="font-weight: bold;">pcminUnlock</span>(unsigned long
+blocksread)<br>
+<br>
+<div style="margin-left: 40px;">unsigned long <span
+ style="font-weight: bold;">blocksread</span> [in]<br>
+<div style="margin-left: 40px;">number of blocks read, starting from
+*blockindex (from the previous call to <a href="#pcminLock">pcminLock</a>)<br>
+</div>
+</div>
+<br>
+<a href="pcmin.html#Functions">back to function list</a><br>
+<hr style="width: 100%; height: 2px;">
+<h3><a name="pcminStop"></a>pcminStop</h3>
+void <span style="font-weight: bold;">pcminStop</span>()<br>
+<br>
+<a href="pcmin.html#Functions">back to function list</a><br>
+<hr style="width: 100%; height: 2px;">End of specification.<br>
+Last updated 04.03.30 20:36 PST by Atlee<br>
+</body>
+</html>
